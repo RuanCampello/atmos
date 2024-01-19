@@ -21,9 +21,10 @@ export default function Display() {
   }, [])
 
   async function getWeather(city:string) {
-    const URL = `https://api.weatherapi.com/v1/current.json?key=${process.env.NEXT_PUBLIC_API_KEY}&q=${city}`
-  
+    const URL = `http://api.weatherapi.com/v1/forecast.json?key=${process.env.NEXT_PUBLIC_API_KEY}&q=${city}&days=1&aqi=no&alerts=no`
     const response = await fetch(URL)
+    console.log(response)
+    
     const data = await response.json()
     console.log(data)
     setWeather(data)
@@ -60,7 +61,7 @@ export default function Display() {
   if(!weather) return
 
   const imageSrc =
-    windowWidth > 768
+    windowWidth >= 768
       ? WeatherConditionImage[weather.current.condition.text + ' Landscape']
       : WeatherConditionImage[weather.current.condition.text]
 
@@ -72,7 +73,7 @@ export default function Display() {
   }).replace(' at', ',')
   
   return (
-    <div className='w-full h-full'>
+    <>
       <div className='relative'>
         <div className='top-0 absolute z-10 m-6'>
           <div className='md:text-3xl text-2xl font-medium md:font-semibold flex gap-12 flex-col'>
@@ -83,7 +84,7 @@ export default function Display() {
           </div>
         </div>
         <div className='absolute z-10 top-1/2 m-6 flex items-baseline'>
-          <h2 className='md:text-[64px] leading-6 font-bold text-[80px]'>
+          <h2 className='text-[64px] leading-6 font-bold'>
             {weather.current.temp_c}°
           </h2>
           <span className='font-medium'>Feels like {weather.current.feelslike_c}°</span>
@@ -99,6 +100,6 @@ export default function Display() {
         className='h-[100vw] w-full object-cover object-bottom md:object-contain md:w-fit md:h-fit brightness-75 md:bg-primary lg:rounded-lg rounded-b-[32px] md:pt-32'
         />
       </div>
-    </div>
+    </>
   )
 }

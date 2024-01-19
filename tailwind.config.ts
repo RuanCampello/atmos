@@ -7,11 +7,15 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    colors: {
-      'primary': '#8A20D5',
-      'secondary': '#E0B6FF',
-      'tertiary': '#E2D3FA',
-      'eerie-black': '#1E1F22',
+    extend: {
+      colors: {
+        'primary': '#8A20D5',
+        'secondary': '#E0B6FF',
+        'tertiary': '#E2D3FA',
+        'pale-purple': '#EBDEFF',
+        'eerie-black': '#1E1F22',
+        'night': '#1E1B1B'
+      }
     }
   },
   plugins: [],
