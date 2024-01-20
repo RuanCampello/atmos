@@ -18,8 +18,6 @@ export default function HourlyForecast() {
     clear: 'https://phils.design/weather-icons/images/svg/a_4_night.svg',
     rainy: 'https://phils.design/weather-icons/images/svg/c_1_rainy.svg'
   }
-  
-  const currentHour = new Date().getHours()
 
   useEffect(() => {
     const handleResize = () => {
@@ -36,6 +34,7 @@ export default function HourlyForecast() {
   const arrayLength = isXl ? 12 : isLg ? 8 : 6
 
   if(!weather) return
+  const currentHour = new Date(weather.location.localtime).getHours()
   
   return (
     <div className='px-4'>

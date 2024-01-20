@@ -6,5 +6,5 @@ export type Location = {
   lon: number
   tz_id: string
   localtime_epoch: number
-  localtime: Date
+  localtime: string
 }

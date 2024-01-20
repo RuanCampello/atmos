@@ -17,7 +17,8 @@ export default function ChanceRain() {
     time: hour.time,
     chance_of_rain: hour.chance_of_rain
   }))
-  const currentHour = new Date()
+
+  const currentHour = new Date(weather.location.localtime).getHours()
 
   // get chance of raining of the next three hours
   const nextThreeHours = Array.from({ length: 5 }, (_, index) => {
@@ -34,9 +35,9 @@ export default function ChanceRain() {
           nextThreeHours.map((hour, index) => {
             return (
               <div key={index} className={`grid grid-cols-5 items-center lg:grid-cols-7 md:grid-cols-4 w-full md:text-base text-sm ${nextThreeHours.length-1 === index && 'pb-4'}`}>
-                <span className='font-medium px-4 lg:text-lg text-center'>{format(hour.time, 'hh:00')}</span>
+                <span className='font-medium px-4 lg:text-lg text-center'>{format(hour.time, 'HH:00')}</span>
                 <div className='relative w-full lg:col-span-5 md:col-span-2 col-span-3'>
-                  <div style={{width: `${hour.chance_of_rain}%`}} className='bg-primary lg:h-8 h-6 max-w-full absolute'>
+                  <div style={{width: `${hour.chance_of_rain}%`}} className='bg-primary lg:h-8 h-6 max-w-full absolute rounded-full'>
                   </div>
                   <div className='w-full lg:h-8 h-6 rounded-full bg-magnolia'></div>
                 </div>
