@@ -27,6 +27,10 @@ export default function ChanceRain() {
     return { time: nextHour, chance_of_rain: matchingHourlyRain ? matchingHourlyRain.chance_of_rain : 0 }
   })
 
+  // weather.forecast.forecastday.map((day) => {
+  //   console.log(day)
+  // })
+
   return (
     <div className='text-night w-full'>
       <Rectangle.Root isCol={true} >
