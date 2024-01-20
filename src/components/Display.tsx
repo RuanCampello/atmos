@@ -21,11 +21,18 @@ export default function Display() {
     }
   }, [])
 
-  async function getWeather(city:string) {
-    const URL = `http://api.weatherapi.com/v1/forecast.json?key=${process.env.NEXT_PUBLIC_API_KEY}&q=${city}&days=7&aqi=no&alerts=no`
-    const response = await fetch(URL) 
-    const data = await response.json()
-    setWeather(data)
+  async function getWeather(city: string) {
+    try {
+      const URL = `https://api.weatherapi.com/v1/forecast.json?key=${process.env.NEXT_PUBLIC_API_KEY}&q=${city}&days=7&aqi=no&alerts=no`
+      const response = await fetch(URL)
+      if (!response.ok) {
+        throw new Error(`Weather API request failed with status ${response.status}`)
+      }
+      const data = await response.json()
+      setWeather(data)
+    } catch (error) {
+      console.error('Error fetching weather data:', error)
+    }
   }
   const geolocationPermission = isLocalStorageAvailable
     ? localStorage.getItem('geolocationPermission'): 'denied'
