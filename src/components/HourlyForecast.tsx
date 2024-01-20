@@ -37,7 +37,12 @@ export default function HourlyForecast() {
   const arrayLength = isXl ? 12 : isLg ? 8 : 6
 
   if(!weather) return
-  const currentHour = new Date(weather.location.localtime).getHours()
+  let currentHour = new Date(weather.location.localtime).getHours()
+  if(currentHour > 12 && isXl) currentHour = 12
+  else if(currentHour > 16 && isLg) currentHour = 16
+  else if(currentHour > 18) currentHour = 18
+  
+  const localtime = new Date(weather.location.localtime).getHours()
   
   return (
     <div className='px-4'>
@@ -60,8 +65,10 @@ export default function HourlyForecast() {
               : urls['sunny']
 
               return (
-                <div className='flex flex-col items-center' key={index}>
-                  <span className='md:text-base lg:text-lg text-[12px]'>{hourIndex === currentHour ? 'Now' : hourIndex + ':00'}</span>
+                <div className={`flex flex-col items-center ${localtime === hourIndex && 'font-bold text-primary'}`} key={index}>
+                  <span className='md:text-base lg:text-lg text-[12px]'>
+                    {localtime === hourIndex ? 'Now' : hourIndex + ':00'}
+                  </span>
                   <iframe src={conditionImage} className='md:w-20 md:h-20 h-12 w-12' />
                   <span className='font-medium md:text-lg lg:text-xl text-sm'>{hourData.temp_c}°</span>
                 </div>
