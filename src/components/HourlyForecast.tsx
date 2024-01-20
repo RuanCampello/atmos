@@ -54,8 +54,6 @@ export default function HourlyForecast() {
               : condition.includes('clear') ? urls['clear'] 
               : urls['sunny']
 
-              console.log(condition)
-              
               return (
                 <div className='flex flex-col items-center' key={index}>
                   <span className='md:text-base lg:text-lg text-[12px]'>{hourIndex === currentHour ? 'Now' : hourIndex + ':00'}</span>

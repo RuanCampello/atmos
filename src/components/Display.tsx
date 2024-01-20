@@ -21,7 +21,7 @@ export default function Display() {
   }, [])
 
   async function getWeather(city:string) {
-    const URL = `http://api.weatherapi.com/v1/forecast.json?key=${process.env.NEXT_PUBLIC_API_KEY}&q=${city}&days=1&aqi=no&alerts=no`
+    const URL = `http://api.weatherapi.com/v1/forecast.json?key=${process.env.NEXT_PUBLIC_API_KEY}&q=${city}&days=7&aqi=no&alerts=no`
     const response = await fetch(URL) 
     const data = await response.json()
     setWeather(data)
@@ -68,10 +68,13 @@ export default function Display() {
     hour: '2-digit',
     minute: '2-digit'
   }).replace(' at', ',')
+
+  const dayTemp = weather.forecast.forecastday[0].day.maxtemp_c
+  const nightTemp = weather.forecast.forecastday[0].day.mintemp_c
   
   return (
     <>
-      <div className='relative md:text-lg'>
+      <div className='relative md:text-lg select-none'>
         <div className='top-0 absolute z-10 m-6'>
           <div className='md:text-3xl text-2xl font-medium md:font-semibold flex gap-12 flex-col'>
             <div className='flex gap-1'>
@@ -86,15 +89,19 @@ export default function Display() {
           </h2>
           <span className='font-medium'>Feels like {weather.current.feelslike_c}°</span>
         </div>
-        <div className='absolute font-medium bottom-0 z-10 m-6'>
-          <span>{localtime}</span>
+        <div className='absolute grid grid-cols-2 w-screen font-medium bottom-0 z-10 p-6'>
+          <span className='self-end'>{localtime}</span>
+          <div className='flex flex-col text-end font-bold'>
+            <span>Day {dayTemp}°</span>
+            <span>Night {nightTemp}°</span>
+          </div>
         </div>
         <Image
         src={imageSrc} 
         alt={weather.current.condition.text} 
         width={2880}
         height={476}
-        className='h-[100vw] w-full object-cover object-bottom md:object-contain md:w-fit md:h-fit brightness-75 md:bg-primary lg:rounded-t-none rounded-b-[32px] md:pt-20'
+        className='h-[100vw] w-full object-cover object-bottom md:object-contain md:w-fit md:h-fit brightness-75 md:bg-primary lg:rounded-t-none rounded-b-[32px] lg:pt-6 md:pt-16'
         />
       </div>
     </>

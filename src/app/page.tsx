@@ -1,3 +1,4 @@
+import DayForecast from '@/components/DayForecast'
 import DayStats from '@/components/DayStats'
 import Display from '@/components/Display'
 import HourlyForecast from '@/components/HourlyForecast'
@@ -9,6 +10,7 @@ export default async function Home() {
         <Display />
         <DayStats />
         <HourlyForecast />
+        <DayForecast />
       </div>
     </div>
   )
