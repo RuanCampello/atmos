@@ -75,7 +75,7 @@ export default function Display() {
   return (
     <>
       <div className='relative md:text-lg select-none'>
-        <div className='top-0 absolute z-10 m-6'>
+        <div className='top-0 lg:top-8 absolute z-10 m-6'>
           <div className='md:text-3xl text-2xl font-medium md:font-semibold flex gap-12 flex-col'>
             <div className='flex gap-1'>
               <h1>{weather.location.name},</h1>
