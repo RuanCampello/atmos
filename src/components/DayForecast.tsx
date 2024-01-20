@@ -19,11 +19,11 @@ export default function DayForecast() {
   }))
 
   return (
-    <div className='p-4 font-medium'>
+    <>
       <Rectangle.Root isCol={true}>
         <Rectangle.Image isCol={true} icon={'calendar'} title='Day Forecast' />
         
-        <ResponsiveContainer width={'100%'} height={200}>
+        <ResponsiveContainer width={'100%'} height={208}>
           <AreaChart data={dailyForecast}>
             <defs>
               <linearGradient id='colour' x1={0} y1={0} x2={0} y2={1}>
@@ -53,7 +53,7 @@ export default function DayForecast() {
         </ResponsiveContainer>
 
       </Rectangle.Root>
-    </div>
+    </>
   )
 }
 

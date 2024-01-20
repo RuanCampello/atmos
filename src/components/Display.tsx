@@ -101,7 +101,7 @@ export default function Display() {
         alt={weather.current.condition.text} 
         width={2880}
         height={476}
-        className='h-[100vw] w-full object-cover object-bottom md:object-contain md:w-fit md:h-fit brightness-75 md:bg-primary lg:rounded-t-none rounded-b-[32px] lg:pt-6 md:pt-16'
+        className='h-[100vw] w-full object-cover object-bottom md:object-contain md:w-fit md:h-fit brightness-75 md:bg-primary lg:rounded-t-none rounded-b-[32px] lg:pt-6 md:pt-20'
         />
       </div>
     </>

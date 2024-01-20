@@ -17,6 +17,9 @@ const config: Config = {
         'periwink': '#E1D3FA',
         'eerie-black': '#1E1F22',
         'night': '#1E1B1B'
+      },
+      spacing: {
+        70: '280px'
       }
     }
   },

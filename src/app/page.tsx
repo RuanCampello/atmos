@@ -1,3 +1,4 @@
+import ChanceRain from '@/components/ChanceRain'
 import DayForecast from '@/components/DayForecast'
 import DayStats from '@/components/DayStats'
 import Display from '@/components/Display'
@@ -10,7 +11,12 @@ export default async function Home() {
         <Display />
         <DayStats />
         <HourlyForecast />
-        <DayForecast />
+        <div className='md:grid md:grid-cols-2 items-center p-4 flex flex-col gap-4'>
+          <DayForecast />
+          <div className='bg-pale-purple h-full rounded-2xl w-full'>
+            <ChanceRain />
+          </div>
+        </div>
       </div>
     </div>
   )
