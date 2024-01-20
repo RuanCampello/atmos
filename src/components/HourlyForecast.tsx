@@ -5,8 +5,11 @@ import { useEffect, useState } from 'react'
 
 export default function HourlyForecast() {
   const { weather } = useWeatherContext()
-  const [isXl, setIsXl] = useState(false)
-  const [isLg, setIsLg] = useState(false)
+
+  const getWindowWidth = () => (typeof window !== 'undefined' ? window.innerWidth : 0)
+
+  const [isXl, setIsXl] = useState(getWindowWidth() >= 1280)
+  const [isLg, setIsLg] = useState(getWindowWidth() >= 1024)
 
   const urls: { [key: string]: string } = {
     partlyCloudy: 'https://phils.design/weather-icons/images/svg/b_1_partly_cloudy.svg',
@@ -20,8 +23,8 @@ export default function HourlyForecast() {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsXl(window.innerWidth >= 1280)
-      setIsLg(window.innerWidth >= 1024)
+      setIsXl(getWindowWidth() >= 1280)
+      setIsLg(getWindowWidth() >= 1024)
     }
 
     window.addEventListener('resize', handleResize)
