@@ -2,6 +2,7 @@
 import { useWeatherContext } from '@/app/contexts/WeatherContext'
 import { Rectangle } from './Rectangle'
 import { useEffect, useState } from 'react'
+import { getWeatherIconUrl } from '@/utils/weather-condition-animated'
 
 export default function HourlyForecast() {
   const { weather } = useWeatherContext()
@@ -55,14 +56,7 @@ export default function HourlyForecast() {
               const hourData = weather.forecast.forecastday[0].hour[hourIndex]
               const condition = weather.forecast.forecastday[0].hour[hourIndex].condition.text.toLowerCase()
 
-              const conditionImage = condition.includes('partly') ? urls['partlyCloudy']
-              : condition.includes('cloudy') ? urls['cloudy']
-              : condition.includes('overcast') ? urls['overcast']
-              : condition.includes('fog') ? urls['fog']
-              : condition.includes('patchy') ? urls['rainy']
-              : condition.includes('rain') ? urls['heavyRain']
-              : condition.includes('clear') ? urls['clear'] 
-              : urls['sunny']
+              const conditionImage = getWeatherIconUrl(condition)
 
               return (
                 <div className={`flex flex-col items-center ${localtime === hourIndex && 'font-bold text-primary'}`} key={index}>
