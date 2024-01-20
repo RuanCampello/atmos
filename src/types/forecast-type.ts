@@ -11,6 +11,11 @@ export type Forecast = {
     }
     hour: {
       chance_of_rain: number
+      temp_c: number
+      temp_f: number
+      condition: {
+        text: string
+      }
     }[]
   }[]
 }

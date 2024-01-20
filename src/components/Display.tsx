@@ -22,11 +22,8 @@ export default function Display() {
 
   async function getWeather(city:string) {
     const URL = `http://api.weatherapi.com/v1/forecast.json?key=${process.env.NEXT_PUBLIC_API_KEY}&q=${city}&days=1&aqi=no&alerts=no`
-    const response = await fetch(URL)
-    console.log(response)
-    
+    const response = await fetch(URL) 
     const data = await response.json()
-    console.log(data)
     setWeather(data)
   }
   const geolocationPermission = isLocalStorageAvailable
@@ -74,7 +71,7 @@ export default function Display() {
   
   return (
     <>
-      <div className='relative'>
+      <div className='relative md:text-lg'>
         <div className='top-0 absolute z-10 m-6'>
           <div className='md:text-3xl text-2xl font-medium md:font-semibold flex gap-12 flex-col'>
             <div className='flex gap-1'>
@@ -83,8 +80,8 @@ export default function Display() {
             </div>
           </div>
         </div>
-        <div className='absolute z-10 top-1/2 m-6 flex items-baseline'>
-          <h2 className='text-[64px] leading-6 font-bold'>
+        <div className='absolute z-10 lg:top-1/2 md:top-1/3 top-1/2 m-6 flex items-baseline'>
+          <h2 className='text-[64px] xl:text-[120px] leading-6 font-bold'>
             {weather.current.temp_c}°
           </h2>
           <span className='font-medium'>Feels like {weather.current.feelslike_c}°</span>
@@ -97,7 +94,7 @@ export default function Display() {
         alt={weather.current.condition.text} 
         width={2880}
         height={476}
-        className='h-[100vw] w-full object-cover object-bottom md:object-contain md:w-fit md:h-fit brightness-75 md:bg-primary lg:rounded-lg rounded-b-[32px] md:pt-32'
+        className='h-[100vw] w-full object-cover object-bottom md:object-contain md:w-fit md:h-fit brightness-75 md:bg-primary lg:rounded-t-none rounded-b-[32px] md:pt-20'
         />
       </div>
     </>

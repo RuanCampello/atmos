@@ -1,13 +1,10 @@
 'use client'
 import { useWeatherContext } from '@/app/contexts/WeatherContext'
-import Rectangle from './Rectangle'
+import { Rectangle } from './Rectangle'
 
 export default function DayStats() {
   const { weather } = useWeatherContext()
   if(!weather) return 
-
-  console.log(weather.current)
-  
 
   const {wind_kph, uv, pressure_mb} = weather.current
   const currentHour = new Date().getHours()
@@ -21,9 +18,12 @@ export default function DayStats() {
   ]
   
   return (
-    <div className='gap-4 grid grid-cols-2 p-4'>
+    <div className='gap-4 grid grid-cols-2 lg:grid-cols-4 p-4'>
       {rectangle.map((rec, index) => (
-        <Rectangle key={index} title={rec.title} icon={rec.icon} data={rec.data} measure={rec.measure} />
+        <Rectangle.Root key={index}>
+          <Rectangle.Image icon={rec.icon} title={rec.title} />
+          <Rectangle.Data data={rec.data} measure={rec.measure} title={rec.title} />
+        </Rectangle.Root>
       ))}
     </div>
   )

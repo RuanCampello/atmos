@@ -13,6 +13,8 @@ const config: Config = {
         'secondary': '#E0B6FF',
         'tertiary': '#E2D3FA',
         'pale-purple': '#EBDEFF',
+        'magnolia': '#F6EDFF',
+        'periwink': '#E1D3FA',
         'eerie-black': '#1E1F22',
         'night': '#1E1B1B'
       }
