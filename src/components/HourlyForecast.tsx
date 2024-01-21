@@ -3,6 +3,7 @@ import { useWeatherContext } from '@/app/contexts/WeatherContext'
 import { Rectangle } from './Rectangle'
 import { useEffect, useState } from 'react'
 import { getWeatherIconUrl } from '@/utils/weather-condition-animated'
+import { format } from 'date-fns'
 
 export default function HourlyForecast() {
   const { weather } = useWeatherContext()
@@ -57,14 +58,17 @@ export default function HourlyForecast() {
               const condition = weather.forecast.forecastday[0].hour[hourIndex].condition.text.toLowerCase()
 
               const conditionImage = getWeatherIconUrl(condition)
+              const localHour = format(new Date().setHours(hourIndex), 'HH:00')
+              const isNow = localtime === hourIndex
+              
 
               return (
-                <div className={`flex flex-col items-center ${localtime === hourIndex && 'font-bold text-primary'}`} key={index}>
-                  <span className='md:text-base lg:text-lg text-[12px]'>
-                    {localtime === hourIndex ? 'Now' : hourIndex + ':00'}
+                <div className={`flex flex-col items-center ${isNow ? 'font-bold text-primary' : 'font-medium'}`} key={index}>
+                  <span className='md:text-base lg:text-lg text-sm'>
+                    {isNow ? 'Now' : localHour}
                   </span>
                   <iframe src={conditionImage} className='md:w-20 md:h-20 h-12 w-12' />
-                  <span className='font-medium md:text-lg lg:text-xl text-sm'>{hourData.temp_c}°</span>
+                  <span className='md:text-lg lg:text-xl text-sm'>{hourData.temp_c}°</span>
                 </div>
               )
             })
