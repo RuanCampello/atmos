@@ -25,7 +25,7 @@ export default function ChanceRain() {
   // get chance of raining of the next five hours
   const nextFiveHours = Array.from({ length: 4 }, (_, index) => {
       const nextHour = new Date(currentHour)
-      nextHour.setHours(currentHour + index)
+      nextHour.setHours(currentHour + index + 1)
   
       const nextHourFormatted = format(nextHour, 'HH:mm')
       const matchingHourlyRain = hourlyRain.find((hourlyEntry) => {

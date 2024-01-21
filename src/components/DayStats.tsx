@@ -7,8 +7,8 @@ export default function DayStats() {
   if(!weather) return 
 
   const {wind_kph, uv, pressure_mb} = weather.current
-  const currentHour = new Date().getHours()
-  const currentChanceRain = weather.forecast.forecastday[0].hour[currentHour-1].chance_of_rain
+  const currentHour = new Date(weather.location.localtime).getHours()
+  const currentChanceRain = weather.forecast.forecastday[0].hour[currentHour].chance_of_rain
   
   const rectangle = [
     {title: 'Wind speed', icon: 'wind', data: wind_kph, measure: 'km/h' },
