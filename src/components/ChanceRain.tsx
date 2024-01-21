@@ -23,7 +23,7 @@ export default function ChanceRain() {
   if(currentHour > 19) currentHour = 19
 
   // get chance of raining of the next five hours
-  const nextFiveHours = Array.from({ length: 5 }, (_, index) => {
+  const nextFiveHours = Array.from({ length: 4 }, (_, index) => {
       const nextHour = new Date(currentHour)
       nextHour.setHours(currentHour + index)
   

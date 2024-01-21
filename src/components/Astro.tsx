@@ -37,7 +37,7 @@ export default function Astro() {
     return dateToNow
   }
   return (
-    <div className='w-full grid grid-cols-2 gap-4 px-4'>
+    <div className='w-full grid grid-cols-2 gap-4 px-4 pb-4'>
       <Rectangle.Root>
         <Rectangle.Image icon='nightStays' title='Sunrise' />
         <div className='grid grid-cols-2 w-full'>
