@@ -84,7 +84,7 @@ export default function Display() {
   
   return (
     <>
-      <div className='relative md:text-lg select-none'>
+      <div className='relative md:text-lg select-none text-neutral-100'>
         <div className='top-6 lg:top-8 absolute z-10 left-6'>
           <div className='lg:text-3xl md:text-2xl text-lg font-medium md:font-semibold flex gap-12 flex-col'>
             <div className='flex gap-1'>
