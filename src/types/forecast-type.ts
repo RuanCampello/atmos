@@ -1,3 +1,5 @@
+import { Astro } from "./astro-type"
+
 export type Forecast = {
   forecastday: {
     date: string
@@ -11,6 +13,7 @@ export type Forecast = {
       avgtemp_f: number
       daily_chance_of_rain: number
     }
+    astro: Astro
     hour: {
       time: string
       chance_of_rain: number

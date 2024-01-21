@@ -6,6 +6,8 @@ import Uv from '../../../public/assets/google-icons/light-mode.svg'
 import RainChance from '../../../public/assets/google-icons/rainy.svg'
 import History from '../../../public/assets/google-icons/history.svg'
 import Calendar from '../../../public/assets/google-icons/calendar.svg'
+import Routine from '../../../public/assets/google-icons/routine.svg'
+import NightStays from '../../../public/assets/google-icons/night-stays.svg'
 
 interface RectangleImageProps {
   icon: string
@@ -19,7 +21,9 @@ const Icons: { [key: string]: string } = {
   uv: Uv,
   rain: RainChance,
   history: History,
-  calendar: Calendar
+  calendar: Calendar,
+  routine: Routine,
+  nightStays: NightStays,
 }
 
 export default function RectangleImage({icon, title, isCol}: RectangleImageProps) {

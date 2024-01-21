@@ -35,8 +35,6 @@ export default function ChanceRain() {
   
       return { hour: nextHourFormatted, chance_of_rain: matchingHourlyRain ? matchingHourlyRain.chance_of_rain : 0 }
   })
-
-  console.log(weather.forecast.forecastday[0])
   
   return (
     <div className='text-night w-full'>

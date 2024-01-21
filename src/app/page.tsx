@@ -1,3 +1,4 @@
+import Astro from '@/components/Astro'
 import ChanceRain from '@/components/ChanceRain'
 import DayForecast from '@/components/DayForecast'
 import DayStats from '@/components/DayStats'
@@ -17,6 +18,7 @@ export default async function Home() {
             <ChanceRain />
           </div>
         </div>
+        <Astro />
       </div>
     </div>
   )
