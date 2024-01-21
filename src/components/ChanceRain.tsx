@@ -2,7 +2,7 @@
 
 import { useWeatherContext } from '@/app/contexts/WeatherContext'
 import { Rectangle } from './Rectangle'
-import { addHours, format, getHours, parse } from 'date-fns'
+import { format, getHours, parse } from 'date-fns'
 
 interface HourlyRain {
   time: string

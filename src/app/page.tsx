@@ -7,7 +7,7 @@ import HourlyForecast from '@/components/HourlyForecast'
 
 export default async function Home() {
   return (
-    <div className='bg-magnolia w-screen h-screen md:overflow-hidden overflow-y-scroll flex-col justify-center items-center flex'>
+    <div className='bg-magnolia w-screen h-screen overflow-y-scroll flex-col justify-center items-center flex'>
       <div className='w-full h-full'>
         <Display />
         <DayStats />

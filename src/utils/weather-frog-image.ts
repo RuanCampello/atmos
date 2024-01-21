@@ -1,24 +1,45 @@
 import sunny from '../../public/assets/google-frog/sunny.svg'
-import partlyCloudy from '../../public/assets/google-frog/partly-cloudy.svg'
+import partlycloudy from '../../public/assets/google-frog/partly-cloudy.svg'
 import overcast from '../../public/assets/google-frog/overcast.svg'
 import cloudy from '../../public/assets/google-frog/cloudy.svg'
 import clear from '../../public/assets/google-frog/clear.svg'
-import sunnyLandscape from '../../public/assets/google-frog/sunny-landscape.png'
-import partlyCloudyLandscape from '../../public/assets/google-frog/partly-cloudy-landscape.png'
-import overcastLandscape from '../../public/assets/google-frog/overcast-lanscape.png'
-import cloudyLandscape from '../../public/assets/google-frog/cloudy-landscape.png'
-import clearLandscape from '../../public/assets/google-frog/clear-landscape.png'
+import sunnylandscape from '../../public/assets/google-frog/sunny-landscape.png'
+import partlycloudylandscape from '../../public/assets/google-frog/partly-cloudy-landscape.png'
+import overcastlandscape from '../../public/assets/google-frog/overcast-lanscape.png'
+import cloudylandscape from '../../public/assets/google-frog/cloudy-landscape.png'
+import clearlandscape from '../../public/assets/google-frog/clear-landscape.png'
+import lightrainlandscape from '../../public/assets/google-frog/light-rain-landscape.png'
+import lightrain from '../../public/assets/google-frog/light-rain.svg'
+import fog from '../../public/assets/google-frog/fog.svg'
+import foglandscape from '../../public/assets/google-frog/fog-landscape.png'
+
 import { StaticImageData } from 'next/image'
 
-export const WeatherConditionImage: { [key: string]: string | StaticImageData } = {
-  Sunny: sunny,
-  Overcast: overcast,
-  'Partly cloudy': partlyCloudy,
-  Cloudy: cloudy,
-  Clear: clear,
-  'Sunny Landscape': sunnyLandscape,
-  'Overcast Landscape': overcastLandscape,
-  'Partly cloudy Landscape': partlyCloudyLandscape,
-  'Cloudy Landscape': cloudyLandscape,
-  'Clear Landscape': clearLandscape,
+const imageUrls: { [key: string]: StaticImageData } = {
+  partlycloudy,
+  partlycloudylandscape,
+  sunny,
+  sunnylandscape,
+  clear,
+  clearlandscape,
+  cloudy,
+  cloudylandscape,
+  overcast,
+  overcastlandscape,
+  lightrain,
+  lightrainlandscape,
+  fog,
+  foglandscape,
+}
+
+export const getFrogImage = (condition: string): StaticImageData => {
+  condition = condition.replaceAll(' ', '')
+  .replace('Patchy', '')
+  .replace('at times', '')
+  .toLowerCase()  
+  
+  const matchingKey = Object.keys(imageUrls).find(key => condition === key)
+  return matchingKey ? imageUrls[matchingKey]
+  : condition.includes('landscape') ? imageUrls['sunnyLandscape']
+  : imageUrls['sunny']
 }

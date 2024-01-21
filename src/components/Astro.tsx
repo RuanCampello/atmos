@@ -26,13 +26,14 @@ export default function Astro() {
   const sunriseFormatted = format(sunriseParsed, 'HH:mm')
 
   const sunsetParsed = parse(astro.sunset, 'hh:mm a', new Date())
-  const sunsetFormatted = format(sunsetParsed, 'HH:mm')
+  const sunsetFormatted = format(sunsetParsed, 'HH:mm')  
 
   function relativeTime(time: string) {
     const targetTime = parse(time, 'HH:mm', new Date())
     const dateToNow = formatDistance(targetTime, currentTime, {addSuffix: true})
     .replace('about', '')
     .replace(' hours', 'h')
+    .replace(' minutes', 'm')
 
     return dateToNow
   }
