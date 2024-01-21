@@ -94,7 +94,7 @@ export default function Display() {
           </div>
         </div>
         <div className='absolute z-10 h-full w-full'>
-          <div className='flex lg:top-1/2 md:top-1/3 top-1/2 absolute left-6 items-baseline'>
+          <div className='flex lg:top-1/2 md:top-[45%] top-1/2 absolute left-6 items-baseline'>
             <h2 className='text-[64px] xl:text-[120px] leading-6 font-bold'>
               {weather.current.temp_c}°
             </h2>
