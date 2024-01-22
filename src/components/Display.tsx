@@ -143,13 +143,17 @@ export default function Display() {
             <h2 className='font-medium text-lg pr-6 leading-5'>{condition}</h2>
           </div>
         </div>
-        <Image
-        src={imageSrc || ''} 
-        alt={condition} 
-        width={2880}
-        height={476}
-        className='h-[100vw] w-full object-cover md:object-contain md:w-fit md:h-fit brightness-75 bg-primary lg:rounded-t-none rounded-b-[32px] lg:pt-8 md:pt-20'
-        />
+        {imageSrc && 
+        <div className='relative'>
+          <Image
+          src={imageSrc} 
+          alt={condition} 
+          width={2880}
+          height={476}
+          className='h-[100vw] w-full object-cover md:object-contain md:w-fit md:h-fit brightness-75 bg-primary lg:rounded-t-none rounded-b-[32px] lg:pt-8 md:pt-20'
+          />
+          <div className='absolute inset-0 bg-gradient-to-b from-transparent md:to-night/40 to-night/50 rounded-xl mix-blend-multiply rounded-b-[32px]'></div>
+        </div>}
       </div>
     </>
   )
