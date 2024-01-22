@@ -1,16 +1,20 @@
 'use client'
 import { useWeatherContext } from '@/app/contexts/WeatherContext'
 import { getWeatherIconUrl } from '@/utils/weather-condition-animated'
-import { getFrogImage } from '@/utils/weather-frog-image'
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import { FormEvent, useEffect, useState } from 'react'
 import { useGeolocated } from 'react-geolocated'
 import Search from '../../public/assets/google-icons/search.svg'
+import { randomImages } from '@/utils/weather-frog-portrait'
+import { Weather } from '@/types/weather-type'
+import { randomImagesLandscape } from '@/utils/weather-frog-landscape'
 
 export default function Display() {
   const { weather, setWeather } = useWeatherContext()
   const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 0)
   const [searchQuery, setSearchQuery] = useState(String)
+  const [conditionImage, setConditionImage] = useState(String)
+  const [conditionImageLandscape, setConditionImageLandscape] = useState(String)
   const isLocalStorageAvailable = typeof localStorage !== 'undefined'
 
   const updateWindowWidth = () => setWindowWidth(window.innerWidth)
@@ -30,14 +34,16 @@ export default function Display() {
       if (!response.ok) {
         throw new Error(`Weather API request failed with status ${response.status}`)
       }
-      const data = await response.json()
+      const data: Weather = await response.json()
       setWeather(data)
+      setConditionImage(randomImages(data.current.condition.text))
+      setConditionImageLandscape(randomImagesLandscape(data.current.condition.text))
     } catch (error) {
       console.error('Error fetching weather data:', error)
     }
   }
 
-  function handleSearchSubmit(e: any) {
+  function handleSearchSubmit(e: FormEvent) {
     e.preventDefault()
     if(searchQuery.trim() !== '') {
       getWeather(searchQuery)
@@ -77,8 +83,8 @@ export default function Display() {
 
   const imageSrc =
     windowWidth >= 768
-      ? getFrogImage(weather.current.condition.text + 'landscape')
-      : getFrogImage(weather.current.condition.text)
+      ? conditionImageLandscape
+      : conditionImage
 
   const localtime: string = new Date(weather.location.localtime).toLocaleDateString('en-GB', {
     month: 'long',
@@ -89,7 +95,6 @@ export default function Display() {
 
   const dayTemp = weather.forecast.forecastday[0].day.maxtemp_c
   const nightTemp = weather.forecast.forecastday[0].day.mintemp_c
-
   const condition = weather.current.condition.text
   
   return (
@@ -133,17 +138,17 @@ export default function Display() {
               <span>Night {nightTemp}°</span>
             </div>
           </div>
-          <div className='flex flex-col items-center w-fit h-fit md:top-[20%] top-1/3 absolute right-0'>
-            <Image alt='condition' src={getWeatherIconUrl(condition)} width={256} height={256} className='lg:w-48 lg:h-48 w-36 h-36' />
+          <div className='flex flex-col items-center w-fit h-fit lg:top-1/4 top-1/3 absolute right-0'>
+            <iframe src={getWeatherIconUrl(condition)} width={256} height={256} className='lg:w-48 lg:h-48 w-36 h-36 md:h-24 md:w-24' />
             <h2 className='font-medium text-lg pr-6 leading-5'>{condition}</h2>
           </div>
         </div>
         <Image
-        src={imageSrc} 
-        alt={weather.current.condition.text} 
+        src={imageSrc || ''} 
+        alt={condition} 
         width={2880}
         height={476}
-        className='h-[100vw] w-full object-cover object-bottom md:object-contain md:w-fit md:h-fit brightness-75 md:bg-primary lg:rounded-t-none rounded-b-[32px] lg:pt-8 md:pt-24'
+        className='h-[100vw] w-full object-cover md:object-contain md:w-fit md:h-fit brightness-75 bg-primary lg:rounded-t-none rounded-b-[32px] lg:pt-8 md:pt-20'
         />
       </div>
     </>

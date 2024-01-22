@@ -5,6 +5,10 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'phils.design'
+      },
+      {
+        protocol: 'https',
+        hostname: 'gitlab.com'
       }
     ]    
   }
