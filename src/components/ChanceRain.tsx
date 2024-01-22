@@ -39,7 +39,7 @@ export default function ChanceRain() {
   return (
     <div className='text-night w-full'>
       <Rectangle.Root isCol={true} >
-        <Rectangle.Image title='Chance of rain' icon='rain' isCol={true} />
+        <Rectangle.Image title='Chance of rain' icon='Rain' isCol={true} />
         {
           nextFiveHours.map((hour, index) => {
             const parsedTime = parse(hour.hour, 'HH:mm', new Date())     

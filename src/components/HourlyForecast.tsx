@@ -38,7 +38,7 @@ export default function HourlyForecast() {
   return (
     <div className='px-4'>
       <Rectangle.Root isCol={true}>
-        <Rectangle.Image isCol={true} icon={'history'} title='Hourly Forecast' />
+        <Rectangle.Image isCol={true} icon={'History'} title='Hourly Forecast' />
         <div className='grid w-full mb-4' style={{gridTemplateColumns: `repeat(${arrayLength}, 1fr)`}}>
           {
             Array.from({ length: arrayLength }).map((_, index) => {

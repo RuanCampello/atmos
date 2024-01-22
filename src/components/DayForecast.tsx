@@ -21,7 +21,7 @@ export default function DayForecast() {
   return (
     <>
       <Rectangle.Root isCol={true}>
-        <Rectangle.Image isCol={true} icon={'calendar'} title='Day Forecast' />
+        <Rectangle.Image isCol={true} icon={'Calendar'} title='Day Forecast' />
         
         <ResponsiveContainer width={'100%'} height={168}>
           <AreaChart data={dailyForecast}>

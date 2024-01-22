@@ -3,11 +3,14 @@ import Image from 'next/image'
 import Wind from '../../../public/assets/google-icons/wind.svg'
 import Waves from '../../../public/assets/google-icons/waves.svg'
 import Uv from '../../../public/assets/google-icons/light-mode.svg'
-import RainChance from '../../../public/assets/google-icons/rainy.svg'
+import Rain from '../../../public/assets/google-icons/rainy.svg'
 import History from '../../../public/assets/google-icons/history.svg'
 import Calendar from '../../../public/assets/google-icons/calendar.svg'
 import Routine from '../../../public/assets/google-icons/routine.svg'
 import NightStays from '../../../public/assets/google-icons/night-stays.svg'
+import SunnyShowing from '../../../public/assets/google-icons/sunny-snowing.svg'
+import Twilight from '../../../public/assets/google-icons/twilight.svg'
+import ModeNight from '../../../public/assets/google-icons/modeNight.svg'
 
 interface RectangleImageProps {
   icon: string
@@ -16,14 +19,17 @@ interface RectangleImageProps {
 }
 
 const Icons: { [key: string]: string } = {
-  wind: Wind,
-  waves: Waves,
-  uv: Uv,
-  rain: RainChance,
-  history: History,
-  calendar: Calendar,
-  routine: Routine,
-  nightStays: NightStays,
+  Wind,
+  Waves,
+  Uv,
+  Rain,
+  History,
+  Calendar,
+  Routine,
+  NightStays,
+  SunnyShowing,
+  Twilight,
+  ModeNight
 }
 
 export default function RectangleImage({icon, title, isCol}: RectangleImageProps) {

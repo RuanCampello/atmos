@@ -131,16 +131,16 @@ export default function Display() {
             </h2>
             <span className='font-medium md:text-base text-sm'>Feels like {weather.current.feelslike_c}°</span>
           </div>
-          <div className='absolute bottom-6 px-6 flex justify-between md:justify-normal md:gap-20 w-full'>
-            <span className='self-end'>{localtime}</span>
-            <div className='flex flex-col text-end font-bold md:text-base text-sm'>
+          <div className='absolute bottom-6 px-6 flex justify-between w-full md:w-10/12'>
+            <span className='self-end lg:text-lg text-base'>{localtime}</span>
+            <div className='flex flex-col text-end font-medium lg:font-bold md:text-base text-sm'>
               <span>Day {dayTemp}°</span>
               <span>Night {nightTemp}°</span>
             </div>
           </div>
           <div className='flex flex-col items-center w-fit h-fit lg:top-1/4 top-1/3 absolute right-0'>
             <iframe src={getWeatherIconUrl(condition)} width={256} height={256} className='lg:w-48 lg:h-48 w-36 h-36 md:h-24 md:w-24' />
-            <h2 className='font-medium text-lg pr-6 leading-5'>{condition}</h2>
+            <h2 className='font-semibold lg:text-xl lg:font-bold text-base pr-6 leading-5'>{condition}</h2>
           </div>
         </div>
         {imageSrc && 
@@ -152,7 +152,7 @@ export default function Display() {
           height={476}
           className='h-[100vw] w-full object-cover md:object-contain md:w-fit md:h-fit brightness-75 bg-primary lg:rounded-t-none rounded-b-[32px] lg:pt-8 md:pt-20'
           />
-          <div className='absolute inset-0 bg-gradient-to-b from-transparent md:to-night/40 to-night/50 rounded-xl mix-blend-multiply rounded-b-[32px]'></div>
+          <div className='absolute inset-0 bg-gradient-to-b from-transparent to-night/50 rounded-xl mix-blend-multiply rounded-b-[32px]'></div>
         </div>}
       </div>
     </>

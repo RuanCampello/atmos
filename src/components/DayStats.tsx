@@ -11,10 +11,10 @@ export default function DayStats() {
   const currentChanceRain = weather.forecast.forecastday[0].hour[currentHour].chance_of_rain
   
   const rectangle = [
-    {title: 'Wind speed', icon: 'wind', data: wind_kph, measure: 'km/h' },
-    {title: 'Rain chance', icon: 'rain', data: currentChanceRain, measure: '%'},
-    {title: 'Pressure', icon: 'waves', data: pressure_mb, measure: 'mb'},
-    {title: 'UV Index', icon: 'uv', data: uv}
+    {title: 'Wind speed', icon: 'Wind', data: wind_kph, measure: 'km/h' },
+    {title: 'Rain chance', icon: 'Rain', data: currentChanceRain, measure: '%'},
+    {title: 'Pressure', icon: 'Waves', data: pressure_mb, measure: 'mb'},
+    {title: 'UV Index', icon: 'Uv', data: uv}
   ]
   
   return (
