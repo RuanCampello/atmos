@@ -75,9 +75,9 @@ export const directories: Dir = {
   sunny: '01-sunny-',
   cloudy: '09-cloudy/09-cloudy-',
   partlycloudy: '03-partly-cloudy-day/03-partly-cloudy-day-',
-  overcast: '04-mostly-cloudy/04-mostly-cloudy-day-',
   clear: '05-clear/05-clear-',
   rain: '11-rain/11-rain-',
   heavyrain: '12-heavy-rain/12-heavy-rain-',
-  fog: '26-haze-fog-dust-smoke/26-haze-fog-dust-smoke-'
+  fog: '26-haze-fog-dust-smoke/26-haze-fog-dust-smoke-',
+  overcast: '04-mostly-cloudy/04-mostly-cloudy-day-',
 }

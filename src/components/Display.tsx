@@ -104,7 +104,13 @@ export default function Display() {
           <div className='lg:text-3xl md:text-2xl text-sm font-medium md:font-semibold flex gap-12 select-none'>
             <div className='flex gap-1 z-10'>
               <h1>{weather.location.name},</h1>
-              <span>{weather.location.country}</span>
+              <span>
+                {weather.location.country
+                .replace('United Kingdom', 'UK')
+                .replace('United States of America', 'USA')
+                .replace('United Arab Emirates', 'UAE')
+                }
+              </span>
             </div>
           </div>
           <form onSubmit={handleSearchSubmit} className='z-20 md:text-base text-sm relative flex items-center ps-7 bg-neutral-100 rounded-full border-2 border-primary md:border-transparent'>

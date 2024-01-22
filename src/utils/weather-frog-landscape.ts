@@ -21,7 +21,10 @@ const frogs: Frog = {
 export function randomImagesLandscape(weather: string): string {
   weather = weather.toLowerCase().replace(/\b(?:moderate|patchy|possible|at times|light)\b/g, '').replace(/\s+/g, '')
   const images = frogs[weather]
-  const directory = directories[weather]
+
+  let directory: string = weather !== 'overcast'
+  ? directories[weather]
+  : '04-mostly-cloudy-day/04-mostly-cloudy-day-'
 
   if(!images) {
     throw new Error(`Frog for ${weather} not found`)

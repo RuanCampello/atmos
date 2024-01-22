@@ -21,7 +21,7 @@ export default function Astro() {
   const moonsetFormatted = format(moonsetParse, 'HH:mm')
 
   return (
-    <div className='w-full grid md:grid-cols-4 grid-cols-2 gap-4 px-4 pb-4'>
+    <div className='w-full grid lg:grid-cols-4 grid-cols-2 gap-4 px-4 pb-4'>
       <AstroItem title='Sunrise' icon='SunnyShowing' data={sunriseFormatted} />
       <AstroItem title='Sunset' icon='Twilight' data={sunsetFormatted} />
       <AstroItem title='Moonrise' icon='NightStays' data={moonriseFormatted} />
