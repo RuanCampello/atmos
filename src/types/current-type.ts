@@ -1,3 +1,5 @@
+import { Condition } from './condition-type'
+
 export type Current = {
   last_updated_epoch: number
   last_updated: Date
@@ -8,7 +10,5 @@ export type Current = {
   uv: number
   is_day: number
   feelslike_c: number
-  condition: {
-    text: string
-  }
+  condition: Condition
 }

@@ -12,6 +12,8 @@ import lightrainlandscape from '../../public/assets/google-frog/light-rain-lands
 import lightrain from '../../public/assets/google-frog/light-rain.svg'
 import fog from '../../public/assets/google-frog/fog.svg'
 import foglandscape from '../../public/assets/google-frog/fog-landscape.png'
+import heavyrain from '../../public/assets/google-frog/heavy-rain.svg'
+import heavyrainlandscape from '../../public/assets/google-frog/heavy-rain-landscape.png'
 
 import { StaticImageData } from 'next/image'
 
@@ -30,16 +32,21 @@ const imageUrls: { [key: string]: StaticImageData } = {
   lightrainlandscape,
   fog,
   foglandscape,
+  heavyrain,
+  heavyrainlandscape
 }
 
 export const getFrogImage = (condition: string): StaticImageData => {
   condition = condition.replaceAll(' ', '')
   .replace('Patchy', '')
+  .replace('possible', '')
   .replace('at times', '')
-  .toLowerCase()  
-  
+  .toLowerCase()
+
   const matchingKey = Object.keys(imageUrls).find(key => condition === key)
   return matchingKey ? imageUrls[matchingKey]
   : condition.includes('landscape') ? imageUrls['sunnyLandscape']
   : imageUrls['sunny']
 }
+
+getFrogImage('Patchy rain')

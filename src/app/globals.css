@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.svg-purple {
+  filter: invert(22%) sepia(100%) saturate(2575%) hue-rotate(267deg) brightness(81%) contrast(108%);
+}

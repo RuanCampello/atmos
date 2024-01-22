@@ -5,6 +5,7 @@ import { getFrogImage } from '@/utils/weather-frog-image'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { useGeolocated } from 'react-geolocated'
+import Search from '../../public/assets/google-icons/search.svg'
 
 export default function Display() {
   const { weather, setWeather } = useWeatherContext()
@@ -101,11 +102,18 @@ export default function Display() {
               <span>{weather.location.country}</span>
             </div>
           </div>
-          <form onSubmit={handleSearchSubmit} className='z-20 md:text-base text-sm relative flex items-center'>
+          <form onSubmit={handleSearchSubmit} className='z-20 md:text-base text-sm relative flex items-center ps-7 bg-neutral-100 rounded-full border-2 border-primary md:border-transparent'>
+            <Image
+             src={Search}
+             width={20}
+             height={20}
+             alt='search'
+             className='absolute left-3 svg-purple'
+            />
             <input 
              type='text'
-             placeholder='Enter a city name'
-             className='lg:py-2 md:px-3 p-1 px-2 lg:w-48 w-36 lg:placeholder:text-base placeholder:text-sm placeholder:text-primary/60 text-primary rounded-full focus:outline-none'
+             placeholder='Enter a city name...'
+             className='md:px-3 px-2 md:w-48 w-36 lg:placeholder:text-base py-1 md:placeholder:text-sm placeholder:text-[13px] placeholder:text-primary/60 text-primary focus:outline-none bg-neutral-100 rounded-full'
              value={searchQuery}
              onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -116,7 +124,7 @@ export default function Display() {
             <h2 className='text-[64px] xl:text-[120px] leading-6 font-bold'>
               {weather.current.temp_c}°
             </h2>
-            <span className='font-medium'>Feels like {weather.current.feelslike_c}°</span>
+            <span className='font-medium md:text-base text-sm'>Feels like {weather.current.feelslike_c}°</span>
           </div>
           <div className='absolute bottom-6 px-6 flex justify-between md:justify-normal md:gap-20 w-full'>
             <span className='self-end'>{localtime}</span>
@@ -126,7 +134,7 @@ export default function Display() {
             </div>
           </div>
           <div className='flex flex-col items-center w-fit h-fit md:top-[20%] top-1/3 absolute right-0'>
-            <iframe src={getWeatherIconUrl(condition)} width={256} height={256} className='lg:w-48 lg:h-48 w-36 h-36' />
+            <Image alt='condition' src={getWeatherIconUrl(condition)} width={256} height={256} className='lg:w-48 lg:h-48 w-36 h-36' />
             <h2 className='font-medium text-lg pr-6 leading-5'>{condition}</h2>
           </div>
         </div>

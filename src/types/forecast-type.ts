@@ -1,4 +1,5 @@
-import { Astro } from "./astro-type"
+import { Astro } from './astro-type'
+import { Condition } from './condition-type'
 
 export type Forecast = {
   forecastday: {
@@ -19,9 +20,7 @@ export type Forecast = {
       chance_of_rain: number
       temp_c: number
       temp_f: number
-      condition: {
-        text: string
-      }
+      condition: Condition
     }[]
   }[]
 }
