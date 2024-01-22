@@ -14,6 +14,7 @@ export default function Display() {
   const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 0)
   const [searchQuery, setSearchQuery] = useState(String)
   const [conditionImage, setConditionImage] = useState(String)
+  const [isLoading, setIsLoading] = useState(true)
   const [conditionImageLandscape, setConditionImageLandscape] = useState(String)
   const isLocalStorageAvailable = typeof localStorage !== 'undefined'
 
@@ -38,6 +39,7 @@ export default function Display() {
       setWeather(data)
       setConditionImage(randomImages(data.current.condition.text))
       setConditionImageLandscape(randomImagesLandscape(data.current.condition.text))
+      setIsLoading(false)
     } catch (error) {
       console.error('Error fetching weather data:', error)
     }
@@ -96,24 +98,27 @@ export default function Display() {
   const dayTemp = weather.forecast.forecastday[0].day.maxtemp_c
   const nightTemp = weather.forecast.forecastday[0].day.mintemp_c
   const condition = weather.current.condition.text
+  const country = weather.location.country
   
   return (
     <>
+      { !isLoading ?
       <div className='relative md:text-lg text-neutral-100'>
         <div className='top-6 lg:top-8 absolute px-6 flex justify-between w-full items-center'>
-          <div className='lg:text-3xl md:text-2xl text-sm font-medium md:font-semibold flex gap-12 select-none'>
-            <div className='flex gap-1 z-10'>
-              <h1>{weather.location.name},</h1>
-              <span>
-                {weather.location.country
+          <div className='lg:text-3xl md:text-2xl text-base font-medium md:font-semibold flex gap-12 select-none'>
+            <div className='flex gap-1 z-10 overflow-hidden max-w-[40vw] md:max-w-full'>
+              <h1 className='truncate'>{weather.location.name},</h1>
+              <span className='truncate'>
+                {country
                 .replace('United Kingdom', 'UK')
+                .replace('USA', '')
                 .replace('United States of America', 'USA')
                 .replace('United Arab Emirates', 'UAE')
                 }
               </span>
             </div>
           </div>
-          <form onSubmit={handleSearchSubmit} className='z-20 md:text-base text-sm relative flex items-center ps-7 bg-neutral-100 rounded-full border-2 border-primary md:border-transparent'>
+          <form onSubmit={handleSearchSubmit} className='z-20 text-base relative flex items-center ps-7 bg-neutral-100 rounded-full border-2 border-primary md:border-transparent select-text'>
             <Image
              src={Search}
              width={20}
@@ -124,7 +129,7 @@ export default function Display() {
             <input 
              type='text'
              placeholder='Enter a city name...'
-             className='md:px-3 px-2 md:w-48 w-36 lg:placeholder:text-base py-1 md:placeholder:text-sm placeholder:text-[13px] placeholder:text-primary/60 text-primary focus:outline-none bg-neutral-100 rounded-full'
+             className='md:px-3 px-2 md:w-48 w-40 placeholder:text-base py-1 placeholder:text-[13px] placeholder:text-primary/60 text-primary focus:outline-none bg-neutral-100 rounded-full'
              value={searchQuery}
              onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -149,7 +154,6 @@ export default function Display() {
             <h2 className='font-semibold lg:text-xl lg:font-bold text-base pr-6 leading-5'>{condition}</h2>
           </div>
         </div>
-        {imageSrc && 
         <div className='relative'>
           <Image
           src={imageSrc} 
@@ -159,8 +163,10 @@ export default function Display() {
           className='h-[100vw] w-full object-cover md:object-contain md:w-fit md:h-fit brightness-75 bg-primary lg:rounded-t-none rounded-b-[32px] lg:pt-8 md:pt-20'
           />
           <div className='absolute inset-0 bg-gradient-to-b from-transparent to-night/50 rounded-xl mix-blend-multiply rounded-b-[32px]'></div>
-        </div>}
+        </div>
       </div>
+      : <div className='bg-primary w-full h-[100vw] md:h-[360px] rounded-b-[32px]'></div>
+      }
     </>
   )
 }

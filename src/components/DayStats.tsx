@@ -7,6 +7,8 @@ export default function DayStats() {
   if(!weather) return 
 
   const {wind_kph, uv, pressure_mb} = weather.current
+  console.log(weather.current);
+  
   const currentHour = new Date(weather.location.localtime).getHours()
   const currentChanceRain = weather.forecast.forecastday[0].hour[currentHour].chance_of_rain
   

@@ -3,7 +3,6 @@
 import { useWeatherContext } from '@/app/contexts/WeatherContext'
 import { format, parse } from 'date-fns'
 import { AstroItem } from './AstroItem'
-
 export default function Astro() {
   const { weather } = useWeatherContext()
   if(!weather) return
