@@ -1,7 +1,12 @@
-import { clear, directories, fog, heavyrain, overcast, partlycloudy, rain, sunny } from './frog-list'
+import { clear, directories, fog, heavyrain, heavysnow, overcast, partlycloudy, rain, snow, sunny } from './frog-list'
 import { Frog, getIntRandom } from './weather-frog-portrait'
 
 const BASE_URL = 'https://gitlab.com/bignutty/google-weather-icons/-/raw/main/froggie/landscape/'
+
+const landscapeFog = [
+  'bridge', 'busstop-waiting', 'fruit-stand', 'hill-cocoa', 'mountain', 
+  'pier', 'rooftop'
+].concat(fog)
 
 const frogs: Frog = {
   sunny: sunny,
@@ -15,16 +20,21 @@ const frogs: Frog = {
   clear: clear,
   rain: ['home-inside'].concat(rain),
   heavyrain: heavyrain,
-  fog: fog
+  fog: landscapeFog,
+  haze: landscapeFog,
+  mist: landscapeFog,
+  snow: snow,
+  heavysnow: heavysnow
 }
 
 export function randomImagesLandscape(weather: string): string {
   weather = weather.toLowerCase().replace(/\b(?:moderate|patchy|possible|at times|light)\b/g, '').replace(/\s+/g, '')
   const images = frogs[weather]
+  let directory: string = directories[weather]
 
-  let directory: string = weather !== 'overcast'
-  ? directories[weather]
-  : '04-mostly-cloudy-day/04-mostly-cloudy-day-'
+  if (weather === 'overcast') {
+    directory = '04-mostly-cloudy-day/04-mostly-cloudy-day-' 
+  }
 
   if(!images) {
     throw new Error(`Frog for ${weather} not found`)

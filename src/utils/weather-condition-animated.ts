@@ -8,16 +8,23 @@ export const getWeatherIconUrl = (condition: string): string => {
     cloudy: 'https://phils.design/weather-icons/images/svg/b_2_cloudy.svg',
     overcast: 'https://phils.design/weather-icons/images/svg/b_3_very_cloudy.svg',
     fog: 'https://phils.design/weather-icons/images/svg/d_4_fog.svg',
+    mist: 'https://phils.design/weather-icons/images/svg/f_3_windy.svg',
+    snow: 'https://phils.design/weather-icons/images/svg/d_1_snow.svg',
+    heavySnow: 'https://phils.design/weather-icons/images/svg/d_2_heavy_snow.svg',
+    sleet: 'https://phils.design/weather-icons/images/svg/d_3_sleet.svg'
   }
 
-  condition = condition.toLowerCase()
-
+  condition = condition.toLowerCase().replaceAll(' ', '')
+  
   return condition.includes('partly') ? urls['partlyCloudy']
     : condition.includes('cloudy') ? urls['cloudy']
     : condition.includes('overcast') ? urls['overcast']
     : condition.includes('fog') ? urls['fog']
-    : condition.includes('patchy') ? urls['rainy']
+    : condition.includes('patchy') || condition.includes('drizzle') ? urls['rainy']
     : condition.includes('rain') ? urls['heavyRain']
     : condition.includes('clear') ? urls['clear']
+    : condition.includes('mist') ? urls['mist']
+    : condition.includes('heavysnow') ? urls['heavySnow']
+    : condition.includes('snow') ? urls['snow']
     : urls['sunny']
 }

@@ -1,4 +1,4 @@
-import { clear, cloudy, directories, fog, heavyrain, overcast, partlycloudy, rain, sunny } from './frog-list'
+import { clear, cloudy, directories, fog, heavyrain, heavysnow, overcast, partlycloudy, rain, snow, sunny } from './frog-list'
 
 export type Frog = {
   [key: string]: string[]
@@ -17,7 +17,11 @@ const frogs: Frog = {
   clear: clear,
   rain: ['orchard-reading','field-leaf'].concat(rain),
   heavyrain: heavyrain,
-  fog: fog
+  fog: fog,
+  haze: fog,
+  mist: fog,
+  snow: snow,
+  heavysnow: ['creek-cocoa'].concat(heavysnow)
 }
 
 export function getIntRandom(max: number) {
