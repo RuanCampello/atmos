@@ -1,23 +1,25 @@
 import { exclude } from './exclude-adjectives'
 
+const BASE_URL = 'https://phils.design/weather-icons/images/svg/'
+
 export const getWeatherIconUrl = (condition: string): string => {
   const urls: { [key: string]: string } = {
-    partlycloudy: 'https://phils.design/weather-icons/images/svg/b_1_partly_cloudy.svg',
-    heavyrain: 'https://phils.design/weather-icons/images/svg/c_2_heavy_rain.svg',
-    sunny: 'https://phils.design/weather-icons/images/svg/a_1_sunny.svg',
-    clear: 'https://phils.design/weather-icons/images/svg/a_4_night.svg',
-    rain: 'https://phils.design/weather-icons/images/svg/c_1_rainy.svg',
-    drizzle: 'https://phils.design/weather-icons/images/svg/c_1_rainy.svg',
-    cloudy: 'https://phils.design/weather-icons/images/svg/b_2_cloudy.svg',
-    overcast: 'https://phils.design/weather-icons/images/svg/b_3_very_cloudy.svg',
-    fog: 'https://phils.design/weather-icons/images/svg/d_4_fog.svg',
-    mist: 'https://phils.design/weather-icons/images/svg/f_3_windy.svg',
-    snow: 'https://phils.design/weather-icons/images/svg/d_1_snow.svg',
-    heavysnow: 'https://phils.design/weather-icons/images/svg/d_2_heavy_snow.svg',
-    sleet: 'https://phils.design/weather-icons/images/svg/d_3_sleet.svg'
+    partlycloudy: 'b_1_partly_cloudy.svg',
+    heavyrain: 'c_2_heavy_rain.svg',
+    sunny: 'a_1_sunny.svg',
+    clear: 'a_4_night.svg',
+    rain: 'c_1_rainy.svg',
+    drizzle: 'c_1_rainy.svg',
+    cloudy: 'b_2_cloudy.svg',
+    overcast: 'b_3_very_cloudy.svg',
+    fog: 'd_4_fog.svg',
+    mist: 'f_3_windy.svg',
+    snow: 'd_1_snow.svg',
+    heavysnow: 'd_2_heavy_snow.svg',
+    sleet: 'd_3_sleet.svg'
   }
 
-  condition = condition.toLowerCase().replace(exclude, '').replaceAll(' ', '')
-  const url: string = urls[condition]  
+  condition = condition.toLowerCase().replace(exclude, '').replace(/ /g, '')
+  const url: string = `${BASE_URL}${encodeURIComponent(urls[condition])}`
   return url
 }

@@ -2,14 +2,7 @@
 const nextConfig = {
   images: {
     remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'phils.design'
-      },
-      {
-        protocol: 'https',
-        hostname: 'gitlab.com'
-      }
+      { protocol: 'https', hostname: 'gitlab.com'}
     ]    
   }
 }
