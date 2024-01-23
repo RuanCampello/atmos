@@ -59,6 +59,12 @@ npm install
 
 ## Usage
 
+> [!IMPORTANT]
+> Get your [WeatherAPI](https://www.weatherapi.com/) API key and set the following variable using a .env.local file:
+
+```
+NEXT_PUBLIC_API_KEY: YOUR-API-KEY
+```
 Run the app locally using the following command:
 
 ```bash
