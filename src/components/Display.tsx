@@ -150,8 +150,8 @@ export default function Display() {
               <span>Night {nightTemp}°</span>
             </div>
           </div>
-          <div className='flex flex-col w-fit h-fit xl:top-1/4 top-1/3 absolute right-0'>
-            <iframe src={getWeatherIconUrl(condition)} width={256} height={256} className='xl:w-48 xl:h-48 w-36 h-36 md:h-24 md:w-24 self-end md:self-center' />
+          <div className='flex flex-col w-fit h-fit 2xl:top-1/4 top-1/3 absolute right-0'>
+            <iframe src={getWeatherIconUrl(condition)} width={256} height={256} className='2xl:w-48 2xl:h-48 w-36 h-36 md:h-24 md:w-24 self-end md:self-center' />
             <h2 className='font-semibold lg:text-xl lg:font-bold text-base md:pr-6 px-2 leading-5 text-center'>{condition}</h2>
           </div>
         </div>
