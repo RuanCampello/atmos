@@ -1,3 +1,7 @@
+<p align='center'>
+  <img src='/atmos-banner.png' />
+</p>
+
 # Atmos
 
 [![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-blueviolet)](https://atmos-ruancampello.vercel.app) ![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat&logo=next.js&logoColor=white) ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white) ![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white) ![WeatherAPI](https://img.shields.io/badge/WeatherAPI-4285F4?style=flat&logo=&logoColor=white)
