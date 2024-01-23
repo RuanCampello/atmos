@@ -147,7 +147,7 @@ export default function Display() {
           </div>
           <div className='absolute bottom-6 px-6 flex justify-between w-full md:w-9/12'>
             <span className='self-end lg:text-lg text-base'>{localtime}</span>
-            <div className='flex flex-col text-end font-medium lg:font-bold md:text-base text-sm'>
+            <div className='flex flex-col text-end font-semibold lg:font-bold md:text-base text-sm'>
               <span>Day {dayTemp}°</span>
               <span>Night {nightTemp}°</span>
             </div>

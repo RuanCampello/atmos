@@ -18,8 +18,6 @@ export const getWeatherIconUrl = (condition: string): string => {
   }
 
   condition = condition.toLowerCase().replace(exclude, '').replaceAll(' ', '')
-  const url: string = urls[condition]
-  console.log(condition)
-  
+  const url: string = urls[condition]  
   return url
 }
