@@ -106,9 +106,12 @@ export default function Display() {
       <div className='relative md:text-lg text-neutral-100'>
         <div className='top-6 lg:top-8 absolute px-6 flex justify-between w-full items-center'>
           <div className='lg:text-3xl md:text-2xl text-base font-medium md:font-semibold flex gap-12 select-none'>
-            <div className='flex gap-1 z-10 overflow-hidden max-w-[40vw] md:max-w-full'>
-              <h1 className='truncate'>{weather.location.name},</h1>
-              <span className='truncate'>
+            <div className='flex gap-1 z-10 overflow-hidden md:max-w-full max-w-[65vw]'>
+              <h1>{weather.location.name},</h1>
+              <span className='md:block hidden'>
+                {weather.location.region},
+              </span>
+              <span>
                 {country
                 .replace('United Kingdom', 'UK')
                 .replace('USA', '')
@@ -118,18 +121,18 @@ export default function Display() {
               </span>
             </div>
           </div>
-          <form onSubmit={handleSearchSubmit} className='z-20 text-base relative flex items-center ps-7 bg-neutral-100 rounded-full border-2 border-primary md:border-transparent select-text'>
+          <form onSubmit={handleSearchSubmit} className='z-20 text-base relative flex items-center md:ps-7 bg-neutral-100 rounded-full border-2 border-primary md:border-transparent select-text'>
             <Image
              src={Search}
              width={20}
              height={20}
              alt='search'
-             className='absolute left-3 svg-purple'
+             className='absolute hidden md:flex md:left-3 svg-purple'
             />
             <input 
              type='text'
-             placeholder='Enter a city name...'
-             className='md:px-3 px-2 md:w-48 w-40 placeholder:text-base py-1 placeholder:text-[13px] placeholder:text-primary/60 text-primary focus:outline-none bg-neutral-100 rounded-full'
+             placeholder='Search...'
+             className='px-3 py-1 md:w-48 w-24 placeholder:text-base placeholder:text-[13px] placeholder:text-primary/60 text-primary focus:outline-none bg-neutral-100 rounded-full'
              value={searchQuery}
              onChange={(e) => setSearchQuery(e.target.value)}
             />
