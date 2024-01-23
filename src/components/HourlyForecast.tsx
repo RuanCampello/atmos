@@ -34,6 +34,7 @@ export default function HourlyForecast() {
   else if(currentHour > 18) currentHour = 18
   
   const localtime = new Date(weather.location.localtime).getHours()
+  console.log(weather.forecast.forecastday[0].hour)
   
   return (
     <div className='px-4'>
