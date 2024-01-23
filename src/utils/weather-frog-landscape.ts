@@ -1,3 +1,4 @@
+import { exclude } from './exclude-adjectives'
 import { clear, directories, fog, heavyrain, heavysnow, overcast, partlycloudy, rain, snow, sunny } from './frog-list'
 import { Frog, getIntRandom } from './weather-frog-portrait'
 
@@ -28,7 +29,7 @@ const frogs: Frog = {
 }
 
 export function randomImagesLandscape(weather: string): string {
-  weather = weather.toLowerCase().replace(/\b(?:moderate|patchy|possible|at times|light|or|showers)\b/g, '').replace(/\s+/g, '')
+  weather = weather.toLowerCase().replace(exclude, '').replace(/\s+/g, '')
   const images = frogs[weather]
   let directory: string = directories[weather]
 

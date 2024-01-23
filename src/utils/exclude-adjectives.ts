@@ -1,0 +1,1 @@
+export const exclude = /\b(?:moderate|patchy|possible|at times|light|or|showers|shower|freezing)\b/g

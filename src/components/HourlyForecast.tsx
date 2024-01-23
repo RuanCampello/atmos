@@ -41,7 +41,7 @@ export default function HourlyForecast() {
         <Rectangle.Image isCol={true} icon={'History'} title='Hourly Forecast' />
         <div className='grid w-full mb-4' style={{gridTemplateColumns: `repeat(${arrayLength}, 1fr)`}}>
           {
-            Array.from({ length: arrayLength }).map((_, index) => {
+            Array.from({length: arrayLength}).map((_, index) => {
               const hourIndex = (currentHour + index) % 24
               const hourData = weather.forecast.forecastday[0].hour[hourIndex]
               const condition = weather.forecast.forecastday[0].hour[hourIndex].condition.text.toLowerCase()
