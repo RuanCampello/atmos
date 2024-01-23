@@ -29,7 +29,7 @@ Atmos is a modern weather app built with Next.js, TypeScript, and styled with Ta
 - **Day Forecast Chart:** Explore a chart displaying the average temperature for each day in the upcoming week.
 - **Rain Percentage Bar Chart:** Visualize the percentage of rain forecasted for the next 4 hours using a bar chart.
 - **Sunset and Sunrise Times:** Be aware of the exact times for sunset and sunrise.
-- **Animated Weather Icons:** Enjoy animated weather icons that bring life to your weather experience. Icons sourced from [Weather Icons](https://github.com/philanri/weather-icons).
+- **Animated Weather Icons:** Enjoy animated weather icons that bring life to your weather experience.
 
 ## Design Inspiration
 
