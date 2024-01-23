@@ -140,21 +140,21 @@ export default function Display() {
         </div>
         <div className='absolute z-10 h-full w-full select-none'>
           <div className='flex lg:top-1/2 md:top-[45%] top-1/2 absolute left-6 items-baseline'>
-            <h2 className='text-[64px] xl:text-[120px] leading-6 font-bold'>
+            <h2 className='xs:text-[80px] text-[64px] xl:text-[120px] leading-6 font-bold'>
               {weather.current.temp_c}°
             </h2>
             <span className='font-medium md:text-base text-sm'>Feels like {weather.current.feelslike_c}°</span>
           </div>
-          <div className='absolute bottom-6 px-6 flex justify-between w-full md:w-9/12'>
+          <div className='absolute bottom-6 px-6 flex justify-between w-full md:w-8/12'>
             <span className='self-end lg:text-lg text-base'>{localtime}</span>
             <div className='flex flex-col text-end font-semibold lg:font-bold md:text-base text-sm'>
               <span>Day {dayTemp}°</span>
               <span>Night {nightTemp}°</span>
             </div>
           </div>
-          <div className='flex flex-col items-center w-fit h-fit lg:top-1/4 top-1/3 absolute right-0'>
-            <iframe src={getWeatherIconUrl(condition)} width={256} height={256} className='lg:w-48 lg:h-48 w-36 h-36 md:h-24 md:w-24' />
-            <h2 className='font-semibold lg:text-xl lg:font-bold text-base pr-6 leading-5'>{condition}</h2>
+          <div className='flex flex-col w-fit h-fit lg:top-1/4 top-1/3 absolute right-0'>
+            <iframe src={getWeatherIconUrl(condition)} width={256} height={256} className='lg:w-48 lg:h-48 w-36 h-36 md:h-24 md:w-24 self-end md:self-center' />
+            <h2 className='font-semibold lg:text-xl lg:font-bold text-base md:pr-6 px-2 leading-5 text-center'>{condition}</h2>
           </div>
         </div>
         <div className='relative'>

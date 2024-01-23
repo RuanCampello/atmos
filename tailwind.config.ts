@@ -20,6 +20,9 @@ const config: Config = {
       },
       spacing: {
         70: '280px'
+      },
+      screens: {
+        'xs': '400px'
       }
     }
   },
