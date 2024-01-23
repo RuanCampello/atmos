@@ -28,7 +28,7 @@ const frogs: Frog = {
 }
 
 export function randomImagesLandscape(weather: string): string {
-  weather = weather.toLowerCase().replace(/\b(?:moderate|patchy|possible|at times|light)\b/g, '').replace(/\s+/g, '')
+  weather = weather.toLowerCase().replace(/\b(?:moderate|patchy|possible|at times|light|or|showers)\b/g, '').replace(/\s+/g, '')
   const images = frogs[weather]
   let directory: string = directories[weather]
 

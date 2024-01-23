@@ -24,7 +24,9 @@ export default function DayForecast() {
         <Rectangle.Image isCol={true} icon={'Calendar'} title='Day Forecast' />
         <div className='md:w-full w-screen pe-8'>
           <ResponsiveContainer width={'100%'} height={168}>
-            <AreaChart data={dailyForecast}>
+            <AreaChart
+             data={dailyForecast}
+            >
               <defs>
                 <linearGradient id='colour' x1={0} y1={0} x2={0} y2={1}>
                   <stop offset={'10%'} stopColor='#2B00A5' stopOpacity={0.5}/>

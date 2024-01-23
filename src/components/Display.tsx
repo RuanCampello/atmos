@@ -142,7 +142,7 @@ export default function Display() {
             </h2>
             <span className='font-medium md:text-base text-sm'>Feels like {weather.current.feelslike_c}°</span>
           </div>
-          <div className='absolute bottom-6 px-6 flex justify-between w-full md:w-10/12'>
+          <div className='absolute bottom-6 px-6 flex justify-between w-full md:w-9/12'>
             <span className='self-end lg:text-lg text-base'>{localtime}</span>
             <div className='flex flex-col text-end font-medium lg:font-bold md:text-base text-sm'>
               <span>Day {dayTemp}°</span>

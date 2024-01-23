@@ -1,9 +1,9 @@
-import { formatDistance, parse } from 'date-fns'
+import { formatDistance, format } from 'date-fns'
 import { Rectangle } from './Rectangle'
 import { useWeatherContext } from '@/app/contexts/WeatherContext'
 
 interface AstroItemProps {
-  data: string
+  data: Date
   title: string
   icon: string
 }
@@ -11,10 +11,12 @@ interface AstroItemProps {
 export function AstroItem({data, title, icon}: AstroItemProps) {
   const { weather } = useWeatherContext()
   if(!weather) return 
+  
   const currentTime = new Date(weather.location.localtime)
-  function relativeTime(time: string) {
-    const targetTime = parse(time, 'HH:mm', new Date())
-    const dateToNow = formatDistance(targetTime, currentTime, {addSuffix: true})
+  const targetTime = format(data, 'HH:mm')
+
+  function relativeTime() {
+    const dateToNow: string = formatDistance(data, currentTime, {addSuffix: true})
     .replace('about', '')
     .replace(' hours', 'h')
     .replace(' minutes', 'm')
@@ -26,8 +28,8 @@ export function AstroItem({data, title, icon}: AstroItemProps) {
     <Rectangle.Root>
       <Rectangle.Image icon={icon} title={title} />
       <div className='grid grid-cols-2 w-full'>
-        <Rectangle.Data title={title} data={data} />
-        <SubTitle text={relativeTime(data)} />
+        <Rectangle.Data title={title} data={targetTime} />
+        <SubTitle text={relativeTime()} />
       </div>
     </Rectangle.Root>
   )
