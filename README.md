@@ -6,7 +6,7 @@
 
 [![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-blueviolet)](https://atmos-ruancampello.vercel.app) ![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat&logo=next.js&logoColor=white) ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white) ![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white) ![WeatherAPI](https://img.shields.io/badge/WeatherAPI-4285F4?style=flat&logo=&logoColor=white)
 
-Atmos is a modern weather app built with Next.js, TypeScript, and styled with Tailwind CSS. The design is based on a redesign of the Google Weather page and is inspired by the following Figma file: [Google Weather App Redesign (Community)](https://www.figma.com/file/nCKhkWJfABdjRTclnhQANY/Google-Weather-App-Redesign-(Community)?type=design&node-id=0%3A1&mode=design&t=syVtRCx4lxiX5hLq-1).
+Atmos is a modern weather app built with Next.js, TypeScript, and styled with Tailwind CSS. The design is based on a redesign of the Google Weather.
 
 ## Table of Contents
 - [Features](#features)
