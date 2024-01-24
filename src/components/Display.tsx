@@ -8,13 +8,13 @@ import Search from '../../public/assets/google-icons/search.svg'
 import { randomImages } from '@/utils/weather-frog-portrait'
 import { Weather } from '@/types/weather-type'
 import { randomImagesLandscape } from '@/utils/weather-frog-landscape'
+import getWeather from '@/api/city'
 
 export default function Display() {
   const { weather, setWeather } = useWeatherContext()
   const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 0)
   const [searchQuery, setSearchQuery] = useState(String)
   const [conditionImage, setConditionImage] = useState(String)
-  const [isLoading, setIsLoading] = useState(true)
   const [conditionImageLandscape, setConditionImageLandscape] = useState(String)
   const isLocalStorageAvailable = typeof localStorage !== 'undefined'
 
@@ -28,15 +28,13 @@ export default function Display() {
     }
   }, [])
 
-  async function getWeather(city: string) {
+  async function fetchWeather(city: string) {
     try {
-      const response = await fetch(`api/${city}`)
-
-      const data: Weather = await response.json()
+      const response = await getWeather(city)
+      const data: Weather = response
       setWeather(data)
       setConditionImage(randomImages(data.current.condition.text))
       setConditionImageLandscape(randomImagesLandscape(data.current.condition.text))
-      setIsLoading(false)
     } catch (error) {
       console.error('Error fetching weather data:', error)
     }
@@ -45,7 +43,7 @@ export default function Display() {
   function handleSearchSubmit(e: FormEvent) {
     e.preventDefault()
     if(searchQuery.trim() !== '') {
-      getWeather(searchQuery)
+      fetchWeather(searchQuery)
     }
   }
 
@@ -75,7 +73,8 @@ export default function Display() {
     : 'London'
 
   useEffect(() => {
-    getWeather(query)
+    if(!weather) fetchWeather(query)
+    return
   }, [query])
 
   if(!weather) return
@@ -99,7 +98,6 @@ export default function Display() {
   
   return (
     <>
-      { !isLoading ?
       <div className='relative md:text-lg text-neutral-100'>
         <div className='top-6 lg:top-8 absolute px-6 flex justify-between w-full items-center'>
           <div className='lg:text-3xl md:text-2xl text-base font-medium md:font-semibold flex gap-12 select-none'>
@@ -165,8 +163,6 @@ export default function Display() {
           <div className='absolute inset-0 bg-gradient-to-b from-transparent to-night/50 rounded-xl mix-blend-multiply rounded-b-[32px]'></div>
         </div>
       </div>
-      : <div className='bg-primary w-full h-[100vw] md:h-[360px] rounded-b-[32px]'></div>
-      }
     </>
   )
 }
