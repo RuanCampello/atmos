@@ -1,5 +1,5 @@
 'use client'
-import { useWeatherContext } from '@/app/contexts/WeatherContext'
+import { useWeatherContext } from '../contexts/WeatherContext'
 import { Rectangle } from './Rectangle'
 
 export default function DayStats() {

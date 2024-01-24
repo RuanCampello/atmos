@@ -2,7 +2,7 @@
 
 import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 import { Rectangle } from './Rectangle'
-import { useWeatherContext } from '@/app/contexts/WeatherContext'
+import { useWeatherContext } from '../contexts/WeatherContext'
 import { format, parseISO } from 'date-fns'
 
 interface DailyForecast {

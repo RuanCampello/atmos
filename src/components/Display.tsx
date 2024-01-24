@@ -1,5 +1,5 @@
 'use client'
-import { useWeatherContext } from '@/app/contexts/WeatherContext'
+import { useWeatherContext } from '../contexts/WeatherContext'
 import { getWeatherIconUrl } from '@/utils/weather-condition-animated'
 import Image from 'next/image'
 import { FormEvent, useEffect, useState } from 'react'
@@ -30,8 +30,7 @@ export default function Display() {
 
   async function getWeather(city: string) {
     try {
-      const response = await fetch(`/api/weather/${city}`)
-      if (!response.ok) throw new Error(`Weather API request failed with status ${response.status}`)
+      const response = await fetch(`api/${city}`)
 
       const data: Weather = await response.json()
       setWeather(data)

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Noto_Sans } from 'next/font/google'
 import './globals.css'
-import { WeatherContextProvider } from './contexts/WeatherContext';
+import { WeatherContextProvider } from '../contexts/WeatherContext'
 
 const noto = Noto_Sans({ weight: ['400', '500', '600', '700', '800'], subsets: ['latin'] });
 

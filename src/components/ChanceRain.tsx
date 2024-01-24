@@ -1,6 +1,6 @@
 'use client'
 
-import { useWeatherContext } from '@/app/contexts/WeatherContext'
+import { useWeatherContext } from '../contexts/WeatherContext'
 import { Rectangle } from './Rectangle'
 import { format, getHours, parse } from 'date-fns'
 

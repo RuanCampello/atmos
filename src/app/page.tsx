@@ -1,3 +1,4 @@
+'use server'
 import Astro from '@/components/Astro'
 import ChanceRain from '@/components/ChanceRain'
 import DayForecast from '@/components/DayForecast'

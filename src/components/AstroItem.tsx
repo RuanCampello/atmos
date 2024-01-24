@@ -1,6 +1,6 @@
 import { formatDistance, format } from 'date-fns'
 import { Rectangle } from './Rectangle'
-import { useWeatherContext } from '@/app/contexts/WeatherContext'
+import { useWeatherContext } from '../contexts/WeatherContext'
 
 interface AstroItemProps {
   data: Date
